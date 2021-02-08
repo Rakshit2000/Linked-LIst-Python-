@@ -40,20 +40,48 @@ def insert_at_pos(head, pos, data): #O(min(pos, n))
     curr.next = newnode
     return head
 
+
+def del_firstnode(head): #O(1)
+    if head is None or head.next is None:
+        return None
+    curr = head
+    while curr.next.next is not None:
+        curr = curr.next
+    curr.next = None
+    return head
+
+
+def del_lastnode(head): #O(n)
+    if head is None or head.next is None:
+        return Node
+    temp = head
+    while temp.next.next is not None:
+        temp = temp.next
+    temp.next = None
+    return head
+
 def printlist(head):
-    while head != None:
-        print(head.data, end = '->')
-        head = head.next
+    temp = head
+    while temp is not None:
+        print(temp.data, end = '->')
+        temp = temp.next
 
 head = None
 head = insert_at_begin(head, 10)
 head = insert_at_begin(head, 20)
 head = insert_at_begin(head, 30)
-insert_at_last(head, 40)
-insert_at_last(head, 50)
-insert_at_last(head, 60)
-insert_at_pos(head, 3, 15)
-insert_at_pos(head, 4, 25)
-
+head = insert_at_begin(head, 40)
+head = insert_at_begin(head, 50)
+#insert_at_last(head, 40)
+#insert_at_last(head, 50)
+#insert_at_last(head, 60)
+#insert_at_pos(head, 3, 15)
+#insert_at_pos(head, 4, 25)
+printlist(head)
+del_firstnode(head)
+print()
+printlist(head)
+del_lastnode(head)
+print()
 printlist(head)
 
